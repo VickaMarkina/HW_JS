@@ -149,59 +149,59 @@ console.log(myPow(2, 3, myPrint)); // 2^3=8
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
 
-function fullInfo() {
-  return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
-};
+// function fullInfo() {
+//   return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
+// };
 
-var car = {
-  engine : 3500,
-  model : 'GV80',
-  name : 'Genesis',
-  year : 2020,
-  _used : 'new',
-  info : fullInfo,
+// var car = {
+//   engine : 3500,
+//   model : 'GV80',
+//   name : 'Genesis',
+//   year : 2020,
+//   _used : 'new',
+//   info : fullInfo,
 
-  get used() {
-    return this.year !== yearNow ? 'used' : 'new';
-  },
-  set used(v) {
-    if (this._used === 'new' && this.year !== yearNow) this.year = yearNow;
-  }
-}
+//   get used() {
+//     return this.year !== yearNow ? 'used' : 'new';
+//   },
+//   set used(v) {
+//     if (this._used === 'new' && this.year !== yearNow) this.year = yearNow;
+//   }
+// }
 
-var car2 = {
-  engine : 3000,
-  model : '911 Carrera 4S',
-  name : 'Porsche',
-  year : 2016,
-  _used : 'used',
-  info : fullInfo,
+// var car2 = {
+//   engine : 3000,
+//   model : '911 Carrera 4S',
+//   name : 'Porsche',
+//   year : 2016,
+//   _used : 'used',
+//   info : fullInfo,
 
-  get used() {
-    return this.year !== yearNow ? 'used' : 'new';
-  },
-  set used(v) {
-    if (this._used === 'new' && this.year !== yearNow) this.year = yearNow;
-  }
-}
+//   get used() {
+//     return this.year !== yearNow ? 'used' : 'new';
+//   },
+//   set used(v) {
+//     if (this._used === 'new' && this.year !== yearNow) this.year = yearNow;
+//   }
+// }
 
-let yearNow = new Date().getFullYear(); // получить текущий год как число
+// let yearNow = new Date().getFullYear(); // получить текущий год как число
 
-console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
+// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
 
-car.used = 'new';
+// car.used = 'new';
 
-console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
+// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- год изменен
 
-car.used = 'used';
+// car.used = 'used';
 
-console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
+// console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2019, new -- изменения не выполняются
 
-console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
+// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new
 
-car.used = 'used';
+// car.used = 'used';
 
-console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
+// console.log(car2.info()); // Infinite FX50 AWD, 5000cc, year 2019, new -- изменения не выполняются
 
 /*
  * #7
