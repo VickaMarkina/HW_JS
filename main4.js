@@ -111,9 +111,18 @@ console.log(getLocalDate(new Date(1999999123456), true, true) === '2033-05-18, 0
  * и выводит текущий день недели: "понедельник", "вторник", … "воскресенье".
  */
 
-// console.log(getWeekDay('2019-01-30')); // среда
-// console.log(getWeekDay('2019-07-16')); // вторник
-// console.log(getWeekDay('2019-07-27')); // суббота
+function getWeekDay(date) {
+  const dayIn = new Date(date);
+  const options = {
+    weekday: 'long'
+  };
+
+  return dayIn.toLocaleString("ru", options);
+}
+
+console.log(getWeekDay('2019-01-30')); // среда
+console.log(getWeekDay('2019-07-16')); // вторник
+console.log(getWeekDay('2019-07-27')); // суббота
 
 /*
  * #4
@@ -122,9 +131,24 @@ console.log(getLocalDate(new Date(1999999123456), true, true) === '2033-05-18, 0
  * День нужно возвратить в европейской нумерации, т.е. понедельник имеет номер 1, вторник номер 2, …, воскресенье – номер 7.
  */
 
-// console.log(getLocalDay('2019-07-16')); // 2
-// console.log(getLocalDay('2019-07-25')); // 4
-// console.log(getLocalDay('2019-07-27')); // 6
+function  getLocalDay(d){
+  const date = new Date(d);
+  let day = date.getDay();
+  if(day === 0) day = 7;
+
+  return day;
+}
+
+console.log(getLocalDay('2018-01-10')); // 3
+console.log(getLocalDay('2019-07-21')); // 7
+console.log(getLocalDay('2019-07-22')); // 1
+console.log(getLocalDay('2019-07-23')); // 2
+console.log(getLocalDay('2019-07-24')); // 3
+console.log(getLocalDay('2019-07-25')); // 4
+console.log(getLocalDay('2019-07-26')); // 5
+console.log(getLocalDay('2019-07-27')); // 6
+console.log(getLocalDay('2019-07-28')); // 7
+console.log(getLocalDay('2019-07-29')); // 1
 
 /*
  * #5
@@ -133,10 +157,17 @@ console.log(getLocalDate(new Date(1999999123456), true, true) === '2033-05-18, 0
  * которая была days дней назад от указанной даты date.
  * Дата принимается в формате YYYY-MM-DD, возвращается DD.MM.YYYY.
  */
+function getDateAgo(d, days) {
+  const date = new Date(d);
+  date.setDate(date.getDate() - days);
+  const options = {day: 'numeric', month: 'numeric', year: 'numeric'};
 
-// console.log(getDateAgo('2019-01-29', 1)); // 28.01.2019
-// console.log(getDateAgo('2019-01-29', 2)); // 27.01.2019
-// console.log(getDateAgo('2019-01-29', 365)); // 29.01.2018
+  return date.toLocaleString("ru", options);
+}
+
+console.log(getDateAgo('2019-01-29', 1)); // 28.01.2019
+console.log(getDateAgo('2019-01-29', 2)); // 27.01.2019
+console.log(getDateAgo('2019-01-29', 365)); // 29.01.2018
 
 
 
